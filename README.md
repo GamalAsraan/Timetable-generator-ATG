@@ -27,7 +27,7 @@ A comprehensive automated timetable generation system using Constraint Satisfact
 
 1.  **Clone the repository**:
     ```bash
-    git clone <repository_url>
+    git clone https://github.com/GamalAsraan/Timetable-generator-ATG.git
     cd Timetable-generator-ATG
     ```
 
