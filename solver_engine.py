@@ -3,24 +3,11 @@ import ast
 import math
 import time
 import random
+import copy
 from dataclasses import dataclass
-import copy # Needed for Phase 2 to deepcopy solutions
 
-
-
-# --- FILE PATHS ---
-FILE_PATHS = {
-    "courses": "Data/Courses.csv",
-    "rooms": "Data/Rooms.csv",
-    "instructors": "Data/Instructors.csv",
-    "timeslots": "Data/TimeSlots.csv",
-    "sections": "Data/sections_data.xlsx",
-    "available_courses": "Data/Avilable_Course.csv"
-}
-OUTPUT_FILE = "final_timetable.csv"
-
-# --- 1.B OPTIMIZATION CONFIGURATION ---
-OPTIMIZATION_WEIGHTS = {
+# --- DEFAULT CONFIGURATION ---
+DEFAULT_OPTIMIZATION_WEIGHTS = {
     "gap_penalty": 1,
     "bad_time_penalty": 2,
     "building_change_penalty": 5,
@@ -87,15 +74,19 @@ class AvailableCourse:
     def __repr__(self):
         return f"Available(level={self.level}, course={self.course_id}, prof={self.preferred_prof})"
 
-# --- DATA LOADER CLASS ---
+# --- DATA INGESTOR CLASS (Replaces DataLoader) ---
 
-class DataLoader:
-    def __init__(self, paths):
-        self.paths = paths
+class DataIngestor:
+    def __init__(self, data_frames):
+        """
+        data_frames: Dictionary of Pandas DataFrames with keys:
+        'courses', 'rooms', 'instructors', 'timeslots', 'sections', 'available_courses'
+        """
+        self.data_frames = data_frames
         self.model_data = {}
     
-    def load_all(self):
-        print("Loading all data sources...")
+    def ingest_all(self):
+        print("Ingesting data from DataFrames...")
         try:
             self.model_data['courses'] = self._load_courses()
             self.model_data['rooms'] = self._load_rooms()
@@ -105,14 +96,14 @@ class DataLoader:
             self.model_data['timeslots_df'] = slots_df
             self.model_data['sections'] = self._load_sections()
             self.model_data['available_courses'] = self._load_available_courses()
-            print("All data loaded and model objects created.")
+            print("All data ingested and model objects created.")
             return self.model_data
         except Exception as e:
-            print(f"Error during data loading: {e}")
-            return None
+            print(f"Error during data ingestion: {e}")
+            raise e
 
     def _load_courses(self):
-        df = pd.read_csv(self.paths['courses'])
+        df = self.data_frames['courses']
         courses_dict = {}
         for row in df.to_dict('records'):
             course_id_clean = str(row['CourseID']).strip()
@@ -121,34 +112,34 @@ class DataLoader:
         return courses_dict
 
     def _load_rooms(self):
-        df = pd.read_csv(self.paths['rooms'])
+        df = self.data_frames['rooms']
         return {row['RoomID']: Room(row['RoomID'], row['Capacity'], row['Type'], row['Type_of_Space']) for row in df.to_dict('records')}
 
     def _load_instructors(self):
-        df = pd.read_csv(self.paths['instructors'])
+        df = self.data_frames['instructors']
         instructors_dict = {}
         for row in df.to_dict('records'):
             qualified = set(c.strip() for c in str(row['QualifiedCourses']).split(','))
             not_preferred = set()
             try:
-                not_preferred_list = ast.literal_eval(row['Not_PreferredSlots'])
+                not_preferred_list = ast.literal_eval(str(row['Not_PreferredSlots']))
                 if isinstance(not_preferred_list, list): not_preferred = set(not_preferred_list)
             except Exception: pass
             instructors_dict[row['InstructorID']] = Instructor(row['InstructorID'], row['Name'], qualified, not_preferred)
         return instructors_dict
 
     def _load_timeslots(self):
-        df = pd.read_csv(self.paths['timeslots'])
+        df = self.data_frames['timeslots']
         df = df.sort_values(by='ID').reset_index(drop=True)
         timeslots_dict = {row['ID']: TimeSlot(row['ID'], row['Day'], row['StartTime'], row['EndTime']) for row in df.to_dict('records')}
         return timeslots_dict, df
 
     def _load_sections(self):
-        df = pd.read_excel(self.paths['sections'])
+        df = self.data_frames['sections']
         return {row['SectionID']: Section(row['SectionID'], row['Department'], row['Level'], row['Specialization'], row['StudentCount']) for row in df.to_dict('records')}
 
     def _load_available_courses(self):
-        df = pd.read_csv(self.paths['available_courses'])
+        df = self.data_frames['available_courses']
         available_list = []
         for row in df.to_dict('records'):
             prof = row['preferred_Prof'] if pd.notna(row['preferred_Prof']) else None
@@ -160,161 +151,7 @@ class DataLoader:
             available_list.append(AvailableCourse(row['Department'], row['Level'], row['Specialization'], course_id_clean, prof, assi_set))
         return available_list
 
-
-
-def check_theoretical_feasibility(variables, model_data):
-    print("\n--- Performing Mathematical Feasibility Check ---")
-    
-    # 1. Total Hours Required
-    total_session_hours = sum(v.duration_slots for v in variables)
-    
-    # 2. Total Room Capacity (Room Hours)
-    # Check by Room Type (Lecture vs Lab types)
-    total_slots_count = len(model_data['timeslots'])
-    room_capacity_by_type = {}
-    for room in model_data['rooms'].values():
-        # Key: (room_type, type_of_space)
-        key = (room.room_type, room.type_of_space)
-        if key not in room_capacity_by_type: room_capacity_by_type[key] = 0
-        room_capacity_by_type[key] += total_slots_count
-        
-    session_demand_by_type = {}
-    for var in variables:
-        # Determine required room type
-        r_type = 'Lecture' if var.session_type == 'Lecture' else 'Lab'
-        # For Lab, we need specific space type
-        space_type = var.course.lab_type if var.session_type == 'Lab' else None
-        
-        if var.session_type == 'Lecture':
-             # Lectures can usually go to any 'Lecture' room, 
-             # BUT some might need specific space if implied? 
-             # The Domain logic says: 
-             # if not session.is_small_group and room.room_type != 'Lecture': continue
-             # if room.type_of_space in EXCLUDED_LECTURE_SPACES: continue
-             
-             # We will aggregate all "Lecture" demand
-             key = ('Lecture', 'Lecture Hall') # Placeholder key for generic lecture
-             # Actually, let's just count "Lecture" capacity vs demand
-             pass
-        else:
-             # Lab
-             key = ('Lab', var.course.lab_type)
-             if key not in session_demand_by_type: session_demand_by_type[key] = 0
-             session_demand_by_type[key] += var.duration_slots
-
-    # Check Lab Capacity (Most critical)
-    for key, demand in session_demand_by_type.items():
-        capacity = 0
-        target_space_type = key[1]
-        
-        for room in model_data['rooms'].values():
-            if room.type_of_space == target_space_type:
-                capacity += total_slots_count
-        
-        print(f"  Type: {target_space_type}, Demand: {demand}, Capacity: {capacity}")
-        if demand > capacity:
-            print(f"CRITICAL WARNING: Room Type '{target_space_type}' is OVERBOOKED!")
-            
-    print(f"Total Class Hours Required: {total_session_hours}")
-    # print(f"Total Room Capacity (Hours): {total_room_hours}") # Removed as we check by type now
-
-    # if total_session_hours > total_room_hours:
-    #    raise ValueError("CRITICAL ERROR: Impossible to solve. Demand exceeds Total Room Capacity.")
-        
-    # 3. Instructor Block Feasibility Check (Advanced)
-    # Check if instructors have enough *consecutive* slots for their assigned classes.
-    
-    # Group demand by duration for each instructor
-    inst_demand = {} # inst_id -> {duration: count}
-    for var in variables:
-        if var.preferred_instructors and len(var.preferred_instructors) == 1:
-            inst_id = list(var.preferred_instructors)[0]
-            if inst_id not in inst_demand: inst_demand[inst_id] = {}
-            if var.duration_slots not in inst_demand[inst_id]: inst_demand[inst_id][var.duration_slots] = 0
-            inst_demand[inst_id][var.duration_slots] += 1
-
-    # Calculate available blocks for each instructor
-    for inst_id, demand_map in inst_demand.items():
-        inst = model_data['instructors'][inst_id]
-        
-        # Get all valid slots
-        valid_slots = set(model_data['timeslots'].keys()) - inst.not_preferred_slots
-        
-        # Check for each duration required
-        for duration, count in demand_map.items():
-            # Count how many valid blocks of 'duration' exist
-            available_blocks = 0
-   
-            sequences = []
-            # Group slots by day
-            day_slots = {}
-            for row in model_data['timeslots_df'].sort_values(by='ID').to_dict('records'):
-                day = row['Day']
-                if day not in day_slots: day_slots[day] = []
-                day_slots[day].append(row['ID'])
-            
-            for day in day_slots:
-                slots = day_slots[day]
-                for i in range(len(slots) - duration + 1):
-                    seq = slots[i : i + duration]
-                    # Check if sequence is consecutive (IDs increase by 1)
-                    if all(seq[j+1] == seq[j] + 1 for j in range(len(seq) - 1)):
-                        # Check if ALL slots in seq are valid for instructor
-                        if all(s in valid_slots for s in seq):
-                            sequences.append(seq)
-            
-            available_blocks = len(sequences)
-            
-            print(f"  Instructor {inst.name} ({inst_id}): Needs {count} blocks of size {duration}. Has {available_blocks} valid blocks.")
-            
-            if count > available_blocks:
-                print(f"CRITICAL WARNING: Instructor {inst.name} cannot fit {count} classes of duration {duration}!")
-                print(f"  Reason: Fragmentation or lack of consecutive slots.")
-                
-    print("\n--- Checking Student-Instructor Constraints ---")
-    
-
-    for var in variables:
-        if not var.preferred_instructors: continue
-        
-        for inst_id in var.preferred_instructors:
-            inst = model_data['instructors'][inst_id]
-            
-            # Get valid slots for this instructor
-            inst_valid_slots = set(model_data['timeslots'].keys()) - inst.not_preferred_slots
-            
-            # Check if there is ANY sequence of var.duration_slots in these valid slots
-            # We can reuse the logic from Block Check roughly
-            
-            has_valid_sequence = False
-
-            sequences = []
-            day_slots = {}
-            for row in model_data['timeslots_df'].sort_values(by='ID').to_dict('records'):
-                day = row['Day']
-                if day not in day_slots: day_slots[day] = []
-                day_slots[day].append(row['ID'])
-            
-            for day in day_slots:
-                slots = day_slots[day]
-                for i in range(len(slots) - var.duration_slots + 1):
-                    seq = slots[i : i + var.duration_slots]
-                    if all(seq[j+1] == seq[j] + 1 for j in range(len(seq) - 1)):
-                        if all(s in inst_valid_slots for s in seq):
-                            has_valid_sequence = True
-                            break
-                if has_valid_sequence: break
-            
-            if not has_valid_sequence:
-                print(f"CRITICAL ERROR: {var.session_id} ({var.course.course_id}) cannot be scheduled!")
-                print(f"  Instructor {inst.name} has NO valid {var.duration_slots}-slot sequences due to preferences.")
-                print(f"  Not Preferred: {inst.not_preferred_slots}")
-                # This is a fatal error for strict assignment
-                raise ValueError(f"Impossible to schedule {var.course.course_id} with {inst.name}")
-
-    print("--- Feasibility Check Passed (Theoretically Solvable) ---")
-
-# --- CSP VARIABLE (ClassSession) ---
+# --- CORE LOGIC CLASSES ---
 
 class ClassSession:
     _session_counter = 0
@@ -341,7 +178,6 @@ class VariableGenerator:
         self.model_data, self.max_capacity = model_data, max_group_capacity
         self.all_variables = []
     def generate_all_variables(self):
-        print(f"\n--- Starting Variable Generation (Max Capacity={self.max_capacity}) ---")
         ClassSession._session_counter = 0
         for req in self.model_data['available_courses']:
             try:
@@ -353,7 +189,6 @@ class VariableGenerator:
             if not matching_sections: continue
             if course_obj.lecture_duration > 0: self._create_lecture_variables(course_obj, matching_sections, req)
             if course_obj.lab_duration > 0: self._create_lab_variables(course_obj, matching_sections, req)
-        print(f"--- Variable Generation Complete: {len(self.all_variables)} total sessions. ---")
         return self.all_variables
     def _create_lecture_variables(self, course_obj, sections, request):
         sections_sorted = sorted(sections, key=lambda s: s.section_id)
@@ -376,10 +211,6 @@ class VariableGenerator:
             lab_session.set_small_group_flag(self.max_capacity)
             lab_session.preferred_instructors = request.preferred_assi
             self.all_variables.append(lab_session)
-
-
-
-# --- CSP DOMAIN ---
 
 class Domain:
     def __init__(self, session_variable, model_data):
@@ -416,12 +247,10 @@ class Domain:
         return valid_rooms
     def _filter_instructors(self, session, all_instructors):
         course_id = session.course.course_id
-        
         if session.preferred_instructors:
             candidates = [inst for inst in all_instructors.values() if inst.instructor_id in session.preferred_instructors]
             if candidates:
                 return candidates
-                
         return [inst for inst in all_instructors.values() if course_id in inst.qualified_courses]
     def __repr__(self):
         return (f"Domain for {self.variable.session_id}: "
@@ -431,22 +260,12 @@ class DomainBuilder:
     def __init__(self, model_data):
         self.model_data = model_data
     def build_all_domains(self, variables):
-        print(f"\n--- Starting Domain Generation for {len(variables)} variables ---")
         unsolvable_count = 0
         for var in variables:
             var.domain = Domain(var, self.model_data)
             if not var.domain.timeslot_sequences or not var.domain.rooms or not var.domain.instructors:
                 unsolvable_count += 1
-                if unsolvable_count < 10: print(f"--- FATAL WARNING: {var!r} has an empty domain.")
-        if unsolvable_count > 0:
-            print(f"--- Domain Generation Complete with {unsolvable_count} UNSOLVABLE variables. ---")
-        else:
-            print("--- Domain Generation Complete. All variables have a valid domain. ---")
-
-
-
-
-# --- PHASE 1 SOLVER ---
+        return unsolvable_count
 
 @dataclass
 class Assignment:
@@ -500,69 +319,35 @@ class BacktrackingSolver:
         self.unassigned_variables = list(variables)
         self.state = TimetableState(model_data)
         self.solution = []
-        self.model_data = model_data # Save for LCV
+        self.model_data = model_data
         self.nodes_visited = 0
 
     def solve(self):
-        print("\n--- Phase 1: Backtracking Solver Starting ---")
-        start_time = time.time()
-        
         self.unassigned_variables.sort(key=self.get_domain_size)
-        
         solution_found = self.recursive_solve()
-        
-        end_time = time.time()
-        print(f"--- Solver Finished in {end_time - start_time:.2f} seconds ---")
-        
         if solution_found:
-            print(f"SUCCESS: Found a valid timetable with {len(self.solution)} assignments.")
-            # We also need to return the final state for Phase 2
             return self.solution, self.state
         else:
-            print("FAILURE: Could not find a valid solution.")
             return None, None
 
     def get_domain_size(self, var):
         d = var.domain
         return len(d.timeslot_sequences) * len(d.rooms) * len(d.instructors)
 
-    def select_variable_mrv(self):
-        # A more dynamic MRV: re-sort the list and pick the best one
-        # This is slower but more accurate
-        self.unassigned_variables.sort(key=self.get_domain_size)
-        return self.unassigned_variables.pop(0)
-
     def get_ordered_domain_values(self, var):
         all_combinations = []
-        
-        # We pre-filter the domain here. 
-        # This acts as a HARD CONSTRAINT before the recursion processes the node.
         for time_seq in var.domain.timeslot_sequences:
             for inst in var.domain.instructors:
-                
-                # --- NEW HARD CONSTRAINT LOGIC ---
-                # 1. Instructor Time Preference
-                # Check if ANY slot in the sequence is in the instructor's "Not Preferred" list.
-                # If so, SKIP this combination entirely.
                 if any(slot_id in inst.not_preferred_slots for slot_id in time_seq):
                     continue 
-
-                # 2. Instructor Consecutive Hours Limit (e.g., max 4 hours)
-                # (You would need to track current load in 'state' to enforce this strictly during solving,
-                # but for now, we filter static constraints).
-
                 for room in var.domain.rooms:
-                    # Append valid combo
                     all_combinations.append((time_seq, room, inst))
         
-        # Heuristic: Sort by "Preferred Instructor" to try best matches first
-        # We no longer need to penalize for bad slots because they are gone.
         def heuristic_score(value_tuple):
             _, _, inst = value_tuple
             score = 0
             if inst.instructor_id in var.preferred_instructors:
-                score -= 10 # Reward preferred instructor
-            # You can add more heuristics here (e.g. prefer smaller rooms to save big ones)
+                score -= 10
             return score
             
         all_combinations.sort(key=heuristic_score)
@@ -570,17 +355,9 @@ class BacktrackingSolver:
 
     def recursive_solve(self):
         self.nodes_visited += 1
-        if self.nodes_visited % 1000 == 0:
-            next_var_info = "None"
-            if self.unassigned_variables:
-                v = self.unassigned_variables[0]
-                next_var_info = f"{v.session_id} ({v.course.course_id})"
-            print(f"Nodes: {self.nodes_visited}, SolSize: {len(self.solution)}, Next: {next_var_info}")
-            
         if not self.unassigned_variables:
             return True 
         
-        # Use simple pop(0) after initial sort for speed
         var = self.unassigned_variables.pop(0) 
 
         for time_seq, room, inst in self.get_ordered_domain_values(var):
@@ -598,29 +375,18 @@ class BacktrackingSolver:
         self.unassigned_variables.insert(0, var)
         return False
 
-
-
-
-# --- PHASE 2 & OUTPUT ---
-
 class CostEvaluator:
-    def __init__(self, model_data):
+    def __init__(self, model_data, weights=None):
         self.model_data = model_data
+        self.weights = weights if weights else DEFAULT_OPTIMIZATION_WEIGHTS
         
-        # Pre-process: Identify "Early" and "Late" slots for soft constraints
-        # Assumption: Early starts before 9:00, Late ends after 16:00
         self.early_late_slots = set()
         for slot in model_data['timeslots'].values():
-            # Parse time strings like "08:30" or "18:00"
             start_hour = int(slot.start_time.split(':')[0])
             end_hour = int(slot.end_time.split(':')[0])
-            
-            if start_hour < 9: # Early Morning
-                self.early_late_slots.add(slot.slot_id)
-            elif end_hour >= 16: # Late Evening
-                self.early_late_slots.add(slot.slot_id)
+            if start_hour < 9: self.early_late_slots.add(slot.slot_id)
+            elif end_hour >= 16: self.early_late_slots.add(slot.slot_id)
 
-        # Pre-process: Map slots to days for gap/distribution checks
         self.slots_by_day = {}
         for slot in model_data['timeslots'].values():
             if slot.day not in self.slots_by_day: self.slots_by_day[slot.day] = []
@@ -629,9 +395,6 @@ class CostEvaluator:
 
     def calculate_total_cost(self, solution, state):
         total_penalty = 0
-        
-        # 1. INSTRUCTOR CONSTRAINTS
-        # We group assignments by instructor to check their daily movement
         inst_assignments = {} 
         
         for assignment in solution:
@@ -639,60 +402,41 @@ class CostEvaluator:
             if inst_id not in inst_assignments: inst_assignments[inst_id] = []
             inst_assignments[inst_id].append(assignment)
             
-            # --- SOFT CONSTRAINT: Early/Late Time Slots ---
-            # Penalty for teaching at bad times
             for slot_id in assignment.timeslot_sequence:
                 if slot_id in self.early_late_slots:
-                    total_penalty += OPTIMIZATION_WEIGHTS["bad_time_penalty"]
+                    total_penalty += self.weights["bad_time_penalty"]
 
-        # --- SOFT CONSTRAINT: Minimize Building Movement ---
         for inst_id, assigns in inst_assignments.items():
-            # Sort assignments by day and time
             assigns.sort(key=lambda a: a.timeslot_sequence[0])
-            
-            # Check movements within the same day
             for i in range(len(assigns) - 1):
                 curr = assigns[i]
                 next_a = assigns[i+1]
-                
-                # Check if they are on the same day
                 curr_day = self.model_data['timeslots'][curr.timeslot_sequence[0]].day
                 next_day = self.model_data['timeslots'][next_a.timeslot_sequence[0]].day
                 
                 if curr_day == next_day:
-                    # Extract Building ID (e.g., "B09" from "B09 F1.09")
                     b1 = curr.room.room_id.split()[0]
                     b2 = next_a.room.room_id.split()[0]
-                    
                     if b1 != b2:
-                        total_penalty += OPTIMIZATION_WEIGHTS["building_change_penalty"]
+                        total_penalty += self.weights["building_change_penalty"]
 
-        # 2. STUDENT CONSTRAINTS (Gaps & Distribution)
         for section in self.model_data['sections'].values():
             sec_schedule = state.section_schedule[section.section_id]
-            
-            # A. Calculate Gaps (Existing Logic)
             total_penalty += self._calculate_gaps(sec_schedule)
             
-            # B. --- SOFT CONSTRAINT: Even Distribution ---
-            # Calculate how many hours they have per day
             daily_load = []
             for day, day_slots in self.slots_by_day.items():
                 hours = sum(1 for s in day_slots if s in sec_schedule)
                 daily_load.append(hours)
             
-            # Penalize Variance (If max day - min day is large)
-            # e.g., Day 1 has 6 hours, Day 2 has 0 hours -> Bad distribution
             if daily_load:
                 load_imbalance = max(daily_load) - min(daily_load)
-                if load_imbalance > 3: # Allow difference of 3 hours, penalize if more
-                    total_penalty += (load_imbalance * OPTIMIZATION_WEIGHTS["daily_load_imbalance"])
+                if load_imbalance > 3:
+                    total_penalty += (load_imbalance * self.weights["daily_load_imbalance"])
 
         return total_penalty
 
     def _calculate_gaps(self, busy_slots):
-        # (Keep your existing gap calculation logic here)
-        # Simply copied from previous implementation to save space
         gap_penalty = 0
         if not busy_slots: return 0
         for day, slot_ids_in_day in self.slots_by_day.items():
@@ -700,13 +444,13 @@ class CostEvaluator:
             day_busy.sort()
             for i in range(len(day_busy) - 1):
                 gap = day_busy[i+1] - day_busy[i]
-                if gap == 2: gap_penalty += OPTIMIZATION_WEIGHTS["gap_penalty"]
-                elif gap == 3: gap_penalty += (OPTIMIZATION_WEIGHTS["gap_penalty"] * 3) # Scaling up
-                elif gap > 3: gap_penalty += (OPTIMIZATION_WEIGHTS["gap_penalty"] * 5)
+                if gap == 2: gap_penalty += self.weights["gap_penalty"]
+                elif gap == 3: gap_penalty += (self.weights["gap_penalty"] * 3)
+                elif gap > 3: gap_penalty += (self.weights["gap_penalty"] * 5)
         return gap_penalty
 
 class SimulatedAnnealingSolver:
-    def __init__(self, solution, state, evaluator, model_data, iterations=50000, initial_temp=10.0, cooling_rate=0.9995):
+    def __init__(self, solution, state, evaluator, model_data, iterations=50000, initial_temp=10.0, cooling_rate=0.9995, progress_callback=None):
         self.current_solution = solution
         self.current_state = state
         self.evaluator = evaluator
@@ -715,21 +459,16 @@ class SimulatedAnnealingSolver:
         self.temp = initial_temp
         self.cooling_rate = cooling_rate
         self.current_cost = evaluator.calculate_total_cost(solution, state)
-        
-        # Keep track of best ever found
         self.best_solution = copy.deepcopy(solution)
         self.best_cost = self.current_cost
+        self.progress_callback = progress_callback
 
     def optimize(self):
-        print(f"\n--- Phase 2: Simulated Annealing Optimization ---")
         print(f"Start Cost: {self.current_cost}")
         
         for i in range(self.iterations):
-            # 1. Decay Temperature
             self.temp *= self.cooling_rate
             
-            # 2. Generate Neighbor (Swap OR Move)
-            # 50% chance to Swap, 50% chance to Move
             if random.random() < 0.5:
                 neighbor_solution, neighbor_state = self.generate_swap_neighbor()
             else:
@@ -738,126 +477,58 @@ class SimulatedAnnealingSolver:
             if neighbor_solution is None:
                 continue
 
-            # 3. Evaluate
             new_cost = self.evaluator.calculate_total_cost(neighbor_solution, neighbor_state)
             delta = new_cost - self.current_cost
 
-            # 4. Acceptance Probability
             acceptance_prob = 1.0
-            if delta > 0: # New solution is WORSE
+            if delta > 0:
                 acceptance_prob = math.exp(-delta / self.temp)
             
             if random.random() < acceptance_prob:
-                # Accept the new state
                 self.current_solution = neighbor_solution
                 self.current_state = neighbor_state
                 self.current_cost = new_cost
                 
-                # Update Best?
                 if new_cost < self.best_cost:
                     self.best_cost = new_cost
                     self.best_solution = copy.deepcopy(neighbor_solution)
-                    print(f"  > New Best Found: {self.best_cost} (Iter {i}, Temp {self.temp:.2f})")
+            
+            # Progress Callback
+            if self.progress_callback and i % 100 == 0:
+                self.progress_callback(i, self.iterations, self.best_cost)
 
         return self.best_solution
 
     def generate_swap_neighbor(self):
-        return self._perform_swap(self.current_solution, self.current_state)
-
-    def generate_move_neighbor(self):
-        """
-        Attempts to move a SINGLE assignment to a new empty slot/room
-        without swapping with anyone. Great for fixing gaps.
-        Optimized to try ALL valid candidates instead of random guessing.
-        """
-        if not self.current_solution: return None, None
-        
-        # 1. Pick random assignment
-        target_idx = random.randint(0, len(self.current_solution) - 1)
-        target_assignment = self.current_solution[target_idx]
-        var = target_assignment.session
-        
-        # 2. Setup neighbor structures
+        if len(self.current_solution) < 2: return None, None
+        a1, a2 = random.sample(self.current_solution, 2)
+        if a1.session.duration_slots != a2.session.duration_slots: return None, None
+            
         neighbor_state = copy.deepcopy(self.current_state)
         neighbor_solution = list(self.current_solution)
         
-        # 3. Remove current assignment from state
-        neighbor_state.remove_assignment(target_assignment)
-        
-        # 4. Construct List of Candidates
-        # A candidate is (timeslot_sequence, room)
-        candidates = []
-        
-        # We only consider the SAME instructor to avoid re-checking qualification
-        inst = target_assignment.instructor
-        
-        for t_seq in var.domain.timeslot_sequences:
-            # HARD CONSTRAINT: Instructor Preference
-            if any(slot in inst.not_preferred_slots for slot in t_seq):
-                continue
-            
-            for room in var.domain.rooms:
-                candidates.append((t_seq, room))
-        
-        # 5. Shuffle candidates for Stochastic Local Search
-        random.shuffle(candidates)
-        
-        # 6. Iterate and find first valid move
-        for (rand_time, rand_room) in candidates:
-             if neighbor_state.is_consistent(var, rand_time, rand_room, inst):
-                # Found a valid move!
-                new_assignment = Assignment(var, rand_time, rand_room, inst)
-                neighbor_state.add_assignment(new_assignment)
-                neighbor_solution[target_idx] = new_assignment
-                return neighbor_solution, neighbor_state
-                
-        return None, None # Could not find a valid move
-
-    def _perform_swap(self, solution, state):
-        # Pick two random assignments to try and swap
-        if len(solution) < 2:
-            return None, None
-            
-        a1, a2 = random.sample(solution, 2)
-        
-        
-        if a1.session.duration_slots != a2.session.duration_slots:
-            return None, None
-            
-            
-        neighbor_state = copy.deepcopy(state)
-        neighbor_solution = list(solution) 
-       
-       
         neighbor_state.remove_assignment(a1)
         neighbor_state.remove_assignment(a2)
         
         new_a1 = Assignment(a1.session, a2.timeslot_sequence, a2.room, a2.instructor)
         new_a2 = Assignment(a2.session, a1.timeslot_sequence, a1.room, a1.instructor)
 
-        if any(slot in new_a1.instructor.not_preferred_slots for slot in new_a1.timeslot_sequence):
-             return None, None
-
+        if any(slot in new_a1.instructor.not_preferred_slots for slot in new_a1.timeslot_sequence): return None, None
         valid_a1 = (new_a1.instructor in a1.session.domain.instructors and
                     new_a1.room in a1.session.domain.rooms and
                     new_a1.timeslot_sequence in a1.session.domain.timeslot_sequences and
                     neighbor_state.is_consistent(new_a1.session, new_a1.timeslot_sequence, new_a1.room, new_a1.instructor))
-        
-        if not valid_a1:
-            return None, None # Swap failed
+        if not valid_a1: return None, None
 
         neighbor_state.add_assignment(new_a1)
 
-        if any(slot in new_a2.instructor.not_preferred_slots for slot in new_a2.timeslot_sequence):
-             return None, None
-
+        if any(slot in new_a2.instructor.not_preferred_slots for slot in new_a2.timeslot_sequence): return None, None
         valid_a2 = (new_a2.instructor in a2.session.domain.instructors and
                     new_a2.room in a2.session.domain.rooms and
                     new_a2.timeslot_sequence in a2.session.domain.timeslot_sequences and
                     neighbor_state.is_consistent(new_a2.session, new_a2.timeslot_sequence, new_a2.room, new_a2.instructor))
+        if not valid_a2: return None, None
 
-        if not valid_a2:
-            return None, None # Swap failed
         neighbor_state.add_assignment(new_a2)
         
         neighbor_solution.remove(a1)
@@ -867,96 +538,100 @@ class SimulatedAnnealingSolver:
         
         return neighbor_solution, neighbor_state
 
-def save_solution_to_csv(solution, model_data, filename):
-    """Converts the list of Assignment objects into a readable CSV."""
-    print(f"\n--- Saving solution to {filename} ---")
-    
-    # We need the TimeSlot objects for start/end times
-    timeslots_map = model_data['timeslots']
-    
-    output_data = []
-    for assignment in solution:
-        session = assignment.session
+    def generate_move_neighbor(self):
+        if not self.current_solution: return None, None
         
-        # Get timeslot info
+        target_idx = random.randint(0, len(self.current_solution) - 1)
+        target_assignment = self.current_solution[target_idx]
+        var = target_assignment.session
+        
+        neighbor_state = copy.deepcopy(self.current_state)
+        neighbor_solution = list(self.current_solution)
+        neighbor_state.remove_assignment(target_assignment)
+        
+        candidates = []
+        inst = target_assignment.instructor
+        
+        for t_seq in var.domain.timeslot_sequences:
+            if any(slot in inst.not_preferred_slots for slot in t_seq):
+                continue
+            for room in var.domain.rooms:
+                candidates.append((t_seq, room))
+        
+        random.shuffle(candidates)
+        
+        for (rand_time, rand_room) in candidates:
+             if neighbor_state.is_consistent(var, rand_time, rand_room, inst):
+                new_assignment = Assignment(var, rand_time, rand_room, inst)
+                neighbor_state.add_assignment(new_assignment)
+                neighbor_solution[target_idx] = new_assignment
+                return neighbor_solution, neighbor_state
+                
+        return None, None
+
+def run_web_solver(data_frames, weights, progress_callback=None):
+    """
+    Main entry point for the web app.
+    """
+    print("--- Starting Web Solver ---")
+    
+    # 1. Ingest Data
+    ingestor = DataIngestor(data_frames)
+    model_data = ingestor.ingest_all()
+    
+    if not model_data:
+        raise ValueError("Failed to load data model.")
+
+    # 2. Generate Variables
+    var_generator = VariableGenerator(model_data, max_group_capacity=75)
+    all_variables = var_generator.generate_all_variables()
+    
+    # 3. Build Domains
+    domain_builder = DomainBuilder(model_data)
+    domain_builder.build_all_domains(all_variables)
+    
+    # 4. Phase 1: Backtracking
+    solver = BacktrackingSolver(all_variables, model_data)
+    phase1_solution, phase1_state = solver.solve()
+    
+    if not phase1_solution:
+        raise ValueError("Phase 1 Solver failed to find a valid initial timetable.")
+        
+    # 5. Phase 2: Simulated Annealing
+    evaluator = CostEvaluator(model_data, weights=weights)
+    optimizer = SimulatedAnnealingSolver(
+        phase1_solution, 
+        phase1_state, 
+        evaluator, 
+        model_data,
+        iterations=10000, # Reduced for web responsiveness, or make configurable
+        initial_temp=20.0,
+        progress_callback=progress_callback
+    )
+    
+    final_solution = optimizer.optimize()
+    
+    # 6. Convert to DataFrame
+    output_data = []
+    timeslots_map = model_data['timeslots']
+    for assignment in final_solution:
+        session = assignment.session
         first_slot_id = assignment.timeslot_sequence[0]
         last_slot_id = assignment.timeslot_sequence[-1]
         
-        start_time = timeslots_map[first_slot_id].start_time
-        end_time = timeslots_map[last_slot_id].end_time
-        day = timeslots_map[first_slot_id].day
-        
-        # Get section info
-        section_ids = ", ".join([s.section_id for s in session.sections])
-        
         output_data.append({
-            "Day": day,
-            "StartTime": start_time,
-            "EndTime": end_time,
+            "Day": timeslots_map[first_slot_id].day,
+            "StartTime": timeslots_map[first_slot_id].start_time,
+            "EndTime": timeslots_map[last_slot_id].end_time,
             "CourseID": session.course.course_id,
             "CourseName": session.course.name,
             "Type": session.session_type,
-            "InstructorID": assignment.instructor.instructor_id,
             "Instructor": assignment.instructor.name,
             "Room": assignment.room.room_id,
-            "Sections": section_ids,
+            "Sections": ", ".join([s.section_id for s in session.sections]),
             "StudentCount": session.total_student_count
         })
         
-    # Create DataFrame and save
     df = pd.DataFrame(output_data)
-    # Sort for readability
     df = df.sort_values(by=["Day", "StartTime"])
-    
-    try:
-        df.to_csv(filename, index=False)
-        print(f"Successfully saved timetable to {filename}")
-    except Exception as e:
-        print(f"Error saving file: {e}")
-
-
-# --- ************************************** ---
-# --- STEP 6: EXECUTION (MAIN)               ---
-# --- ************************************** ---
-
-if __name__ == "__main__":
-    print("--- Running Data Loader ---")
-    loader = DataLoader(FILE_PATHS)
-    model_data = loader.load_all()
-    
-    if model_data:
-        # 2. Generate Variables
-        var_generator = VariableGenerator(model_data, max_group_capacity=75)
-        all_variables = var_generator.generate_all_variables()
-        
-        # --- NEW: FEASIBILITY CHECK ---
-        try:
-            check_theoretical_feasibility(all_variables, model_data)
-        except ValueError as e:
-            print(e)
-            exit() # Stop if impossible
-            
-        # 3. Build Domains
-        domain_builder = DomainBuilder(model_data)
-        domain_builder.build_all_domains(all_variables)
-        
-        # 4. Solve Phase 1 (With Hard Constraints)
-        solver = BacktrackingSolver(all_variables, model_data)
-        phase1_solution, phase1_state = solver.solve()
-        
-        if phase1_solution:
-            # 5. Optimize Phase 2 (Simulated Annealing)
-            evaluator = CostEvaluator(model_data)
-            
-            # Use Simulated Annealing instead of simple Hill Climbing
-            optimizer = SimulatedAnnealingSolver(
-                phase1_solution, 
-                phase1_state, 
-                evaluator, 
-                model_data,
-                iterations=50000,
-                initial_temp=20.0 
-            )
-            final_optimized_solution = optimizer.optimize()
-            
-            save_solution_to_csv(final_optimized_solution, model_data, OUTPUT_FILE)
+    return df

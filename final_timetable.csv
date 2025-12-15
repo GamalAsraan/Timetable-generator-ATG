@@ -1,0 +1,281 @@
+Day,StartTime,EndTime,CourseID,CourseName,Type,InstructorID,Instructor,Room,Sections,StudentCount
+Monday,10:45 AM,12:15 PM,ECE111,Digital Logic Design,Lecture,P08,Prof. Ahmed Allam,B08 G.41,"CSIT-1-s4, CSIT-1-s5, CSIT-1-s6",75
+Monday,10:45 AM,12:15 PM,LRA105,Theater and Drama,Lecture,P33,Dr. Omar Sharif,B18 G.08,"CSIT-1-s1, CSIT-1-s2, CSIT-1-s3",75
+Monday,10:45 AM,12:15 PM,LRA306,Natural Resources and Sustainability,Lecture,P34,Prof. LBA,B09 G.35,"CSIT-2-s1, CSIT-2-s2, CSIT-2-s3",75
+Monday,10:45 AM,12:15 PM,CNC111,Networks and Web Programming,Lecture,P05,Dr. Ahmed Anter,B26 G.08,"CSIT-2-s4, CSIT-2-s5, CSIT-2-s6",75
+Monday,10:45 AM,12:15 PM,CSC317,Computer Graphics and Visualization,Lecture,P19,Dr. Hataba,Hall - Red,"CSIT-3-CNC-s1, CSIT-3-CNC-s2, CSIT-3-CNC-s3",75
+Monday,10:45 AM,12:15 PM,AID411,BIG Data Analytics & Visualization,Lecture,P23,Prof. Marghany Hassan,B17 F1.15,"CSIT-4-AID-s1, CSIT-4-AID-s2, CSIT-4-AID-s3",75
+Monday,10:45 AM,12:15 PM,ECE324,Digital Signal Processing,Lab,A02,ECE Department Staff,B18 F1.12,CSIT-3-AID-s2,25
+Monday,10:45 AM,12:15 PM,CSC314,Software Modeling and Analysis,Lab,A24,Eng. Yousef Ali,B25 G.02,CSIT-3-CSC-s1,25
+Monday,10:45 AM,12:15 PM,BIF411,Structural Bioinformatics,Lab,A23,Eng. Layla Ibrahim,B17 F1.13,CSIT-4-BIF-s1,15
+Monday,10:45 AM,12:15 PM,PHY113,Physics 1,Lab,A06,Eng. Fatima Ali,B26 F1.03,CSIT-1-s7,25
+Monday,10:45 AM,12:15 PM,CNC411,Fundamentals of Cybersecurity,Lab,A35,Eng. Maryam Essam,B17 G.07,CSIT-4-CNC-s3,25
+Monday,10:45 AM,12:15 PM,CSC211,Software Engineering,Lab,A36,Eng. Adam Mohamed,B25 G.05,CSIT-2-s7,25
+Monday,10:45 AM,12:15 PM,CSC211,Software Engineering,Lab,A12,Eng. Menna Mahmoud,B17 F1.14,CSIT-2-s8,25
+Monday,10:45 AM,12:15 PM,ACM215,Ordinary Differential Equations,Lab,A43,Eng. Ali Sato,B18 F1.08,CSIT-2-s9,25
+Monday,10:45 AM,12:15 PM,CNC311,Computer Networks,Lab,A15,Eng. Nada Hamdy,B18 G.04,CSIT-3-AID-s1,25
+Monday,10:45 AM,12:15 PM,CNC311,Computer Networks,Lab,A07,Eng. Fatma Elsayed,B18 F1.05,CSIT-3-AID-s3,25
+Monday,10:45 AM,12:15 PM,LRA401,Japanese Language (1),Lab,A38,Prof. Yumi Sato,B26 F1.01,CSIT-1-s9,25
+Monday,10:45 AM,12:15 PM,CNC314,Database Systems,Lab,A20,Eng. Salma Alashry,B07 F1.21,CSIT-3-BIF-s1,15
+Monday,10:45 AM,12:15 PM,CSC411,Software Verification and Validation,Lab,A42,Eng. Fatima Ali,B18 F1.19,CSIT-4-CSC-s2,15
+Monday,10:45 AM,12:15 PM,CNC415,Network Design and Management,Lab,A41,Eng. Omar Hassan,B17 F1.03,CSIT-4-CNC-s1,25
+Monday,12:30 PM,2:00 PM,MTH212,Probability and Statistics,Lecture,P14,Dr. Ayman Arafa,B26 G-22 ,"CSIT-2-s7, CSIT-2-s8, CSIT-2-s9",75
+Monday,12:30 PM,2:00 PM,CNC314,Database Systems,Lecture,P27,Dr. Mohamed Issa,B17 F1.16,"CSIT-3-AID-s1, CSIT-3-AID-s2, CSIT-3-AID-s3",75
+Monday,12:30 PM,2:00 PM,CNC411,Fundamentals of Cybersecurity,Lecture,P06,Dr. Ahmed Arafa,B26 G.21,"CSIT-4-CNC-s1, CSIT-4-CNC-s2, CSIT-4-CNC-s3",75
+Monday,12:30 PM,2:00 PM,CSC315,Seminar and Project-Based Learning on CSIT,Lecture,P30,Prof. Mostafa Soliman,B25 F1.11,CSIT-3-BIF-s1,15
+Monday,12:30 PM,2:00 PM,PHY113,Physics 1,Lab,A06,Eng. Fatima Ali,B26 F1.04,CSIT-1-s9,25
+Monday,12:30 PM,2:00 PM,LRA401,Japanese Language (1),Lab,A38,Prof. Yumi Sato,B26 G.13,CSIT-1-s7,25
+Monday,12:30 PM,2:00 PM,CSE214,Computer Organization,Lab,A08,Eng. Heba Abdelkader,B09 F1.13,CSIT-2-s1,25
+Monday,12:30 PM,2:00 PM,AID417,Advanced Data Mining,Lab,A07,Eng. Fatma Elsayed,B18 F1.20,CSIT-4-AID-s2,25
+Monday,12:30 PM,2:00 PM,CSC111,Fundamentals of Programming,Lab,A10,Eng. Mariam Ismael,B17 G.08,CSIT-1-s5,25
+Monday,12:30 PM,2:00 PM,CSC317,Computer Graphics and Visualization,Lab,A37,Eng. Nora Gamal,B26 F1.01,CSIT-3-CNC-s3,25
+Monday,12:30 PM,2:00 PM,CNC314,Database Systems,Lab,A16,Eng. Nourhan Waleed,B18 F1.01,CSIT-3-CNC-s1,25
+Monday,12:30 PM,2:00 PM,MTH212,Probability and Statistics,Lab,A01,BAS Department Staff,B08 F1.07,CSIT-2-s3,25
+Monday,12:30 PM,2:00 PM,ECE111,Digital Logic Design,Lab,A02,ECE Department Staff,B18 F1.05,CSIT-1-s6,25
+Monday,12:30 PM,2:00 PM,CSC415,New Trends in Computer Science,Lab,A42,Eng. Fatima Ali,B18 G.21,CSIT-4-CSC-s2,15
+Monday,12:30 PM,2:00 PM,LRA403,Japanese Language (3),Lab,A40,Prof. Lina Morales,B17 G.07,CSIT-2-s4,25
+Monday,12:30 PM,2:00 PM,CSC211,Software Engineering,Lab,A12,Eng. Menna Mahmoud,B17 F1.03,CSIT-2-s5,25
+Monday,12:30 PM,2:00 PM,AID312,Intelligent Systems,Lab,A21,Eng. Salma Waleed,B26 F1.02,CSIT-3-CNC-s2,25
+Monday,2:15 PM,3:45 PM,CSC414,Game Design & Development,Lecture,P32,Dr. Mustafa AlSayed,Hall - Blue,"CSIT-4-CSC-s1, CSIT-4-CSC-s2",40
+Monday,2:15 PM,3:45 PM,ECE111,Digital Logic Design,Lab,A02,ECE Department Staff,B18 F1.08,CSIT-1-s7,25
+Monday,2:15 PM,3:45 PM,CNC418,Software Security,Lecture,P19,Dr. Hataba,Hall - Red,"CSIT-4-CNC-s1, CSIT-4-CNC-s2, CSIT-4-CNC-s3",75
+Monday,9:00 AM,10:30 AM,MTH111,Mathematics (1),Lecture,P14,Dr. Ayman Arafa,B26 F1.01,"CSIT-1-s7, CSIT-1-s8, CSIT-1-s9",75
+Monday,9:00 AM,10:30 AM,LRA104,Music and Technology,Lecture,P03,Dr. Aisha Khan,B17 F1.16,"CSIT-1-s1, CSIT-1-s2, CSIT-1-s3",75
+Monday,9:00 AM,10:30 AM,ACM215,Ordinary Differential Equations,Lecture,P04,Dr. Ahmed Abdel-Malk,Hall - Red,"CSIT-2-s4, CSIT-2-s5, CSIT-2-s6",75
+Monday,9:00 AM,10:30 AM,AID312,Intelligent Systems,Lecture,P07,Dr. Ahmed Bayumi,Hall - Green,"CSIT-3-CNC-s3, CSIT-3-CSC-s1, CSIT-3-CSC-s2",65
+Monday,9:00 AM,10:30 AM,CNC311,Computer Networks,Lecture,P38,Prof. Samir Ahmed,B25 G-21,"CSIT-3-AID-s1, CSIT-3-AID-s2, CSIT-3-AID-s3",75
+Monday,9:00 AM,10:30 AM,AID413,Data Security,Lab,A13,Eng. Nada Ahmed,B09 F1.04,CSIT-4-AID-s3,25
+Monday,9:00 AM,10:30 AM,CNC111,Networks and Web Programming,Lab,A45,Eng. Yousef Said,B26 G.02,CSIT-2-s9,25
+Monday,9:00 AM,10:30 AM,AID411,BIG Data Analytics & Visualization,Lab,A14,Eng. Nada Essam,B17 F1.14,CSIT-4-AID-s2,25
+Monday,9:00 AM,10:30 AM,CNC411,Fundamentals of Cybersecurity,Lab,A10,Eng. Mariam Ismael,B17 F1.03,CSIT-4-CNC-s1,25
+Monday,9:00 AM,10:30 AM,BIF412,Management and Design of Health Care Systems,Lecture,P39,Dr. Sameh Sherif,B07 F1.01,CSIT-4-BIF-s1,15
+Monday,9:00 AM,10:30 AM,MTH212,Probability and Statistics,Lab,A01,BAS Department Staff,B08 F1.10,CSIT-2-s2,25
+Monday,9:00 AM,10:30 AM,ECE111,Digital Logic Design,Lab,A02,ECE Department Staff,B18 F1.02,CSIT-1-s4,25
+Monday,9:00 AM,10:30 AM,CSC426,Distributed Systems,Lab,A42,Eng. Fatima Ali,B18 G.19,CSIT-4-CSC-s2,15
+Monday,9:00 AM,10:30 AM,LRA401,Japanese Language (1),Lab,A40,Prof. Lina Morales,B17 G.02,CSIT-1-s5,25
+Monday,9:00 AM,10:30 AM,ACM215,Ordinary Differential Equations,Lab,A43,Eng. Ali Sato,B18 G.21,CSIT-2-s1,25
+Monday,9:00 AM,10:30 AM,LRA403,Japanese Language (3),Lab,A38,Prof. Yumi Sato,B26 G.06,CSIT-2-s8,25
+Monday,9:00 AM,10:30 AM,CNC415,Network Design and Management,Lab,A41,Eng. Omar Hassan,B17 G.04,CSIT-4-CNC-s3,25
+Monday,9:00 AM,10:30 AM,CNC311,Computer Networks,Lab,A07,Eng. Fatma Elsayed,B18 F1.20,CSIT-3-BIF-s1,15
+Monday,9:00 AM,10:30 AM,AID428,New Trends in AI,Lab,A06,Eng. Fatima Ali,B26 F1.13,CSIT-4-AID-s1,25
+Sunday,10:45 AM,12:15 PM,ECE111,Digital Logic Design,Lecture,P08,Prof. Ahmed Allam,B17 F1.15,"CSIT-1-s1, CSIT-1-s2, CSIT-1-s3",75
+Sunday,10:45 AM,12:15 PM,PHY113,Physics 1,Lecture,P01,Dr. Adel Fathy,B9 Theater,"CSIT-1-s7, CSIT-1-s8, CSIT-1-s9",75
+Sunday,10:45 AM,12:15 PM,LRA105,Theater and Drama,Lecture,P33,Dr. Omar Sharif,B10 Theater,"CSIT-1-s4, CSIT-1-s5, CSIT-1-s6",75
+Sunday,10:45 AM,12:15 PM,CSC211,Software Engineering,Lecture,P06,Dr. Ahmed Arafa,B26 F1.01,"CSIT-2-s4, CSIT-2-s5, CSIT-2-s6",75
+Sunday,10:45 AM,12:15 PM,MTH212,Probability and Statistics,Lecture,P14,Dr. Ayman Arafa,Hall - Red,"CSIT-2-s1, CSIT-2-s2, CSIT-2-s3",75
+Sunday,10:45 AM,12:15 PM,CSC314,Software Modeling and Analysis,Lecture,P32,Dr. Mustafa AlSayed,Hall - Yellow,"CSIT-3-CSC-s1, CSIT-3-CSC-s2",40
+Sunday,10:45 AM,12:15 PM,CSC415,New Trends in Computer Science,Lecture,P29,Dr. Mostafa Mohamed,B17 F1.03,"CSIT-4-CSC-s1, CSIT-4-CSC-s2",40
+Sunday,10:45 AM,12:15 PM,MTH212,Probability and Statistics,Lab,A01,BAS Department Staff,B26 G.08,CSIT-2-s7,25
+Sunday,10:45 AM,12:15 PM,ECE324,Digital Signal Processing,Lab,A02,ECE Department Staff,B26 G.03,CSIT-3-CNC-s1,25
+Sunday,10:45 AM,12:15 PM,AID427,New Trends in Data Science,Lab,A06,Eng. Fatima Ali,B18 F1.02,CSIT-4-AID-s2,25
+Sunday,10:45 AM,12:15 PM,CNC418,Software Security,Lab,A41,Eng. Omar Hassan,B26 F1.03,CSIT-4-CNC-s2,25
+Sunday,10:45 AM,12:15 PM,CSE214,Computer Organization,Lab,A08,Eng. Heba Abdelkader,B17 F1.13,CSIT-2-s8,25
+Sunday,10:45 AM,12:15 PM,AID411,BIG Data Analytics & Visualization,Lab,A14,Eng. Nada Essam,B17 G.08,CSIT-4-AID-s3,25
+Sunday,10:45 AM,12:15 PM,CSC211,Software Engineering,Lab,A12,Eng. Menna Mahmoud,B26 F1.04,CSIT-2-s9,25
+Sunday,10:45 AM,12:15 PM,AID312,Intelligent Systems,Lab,A16,Eng. Nourhan Waleed,B10 F1.08,CSIT-3-AID-s2,25
+Sunday,10:45 AM,12:15 PM,AID311,Mathematics of Data Science,Lab,A21,Eng. Salma Waleed,B10 F1.06,CSIT-3-AID-s3,25
+Sunday,10:45 AM,12:15 PM,AID312,Intelligent Systems,Lab,A28,Eng. Omar Hassan,B17 F1.18,CSIT-3-BIF-s1,15
+Sunday,10:45 AM,12:15 PM,BIF411,Structural Bioinformatics,Lecture,P39,Dr. Sameh Sherif,B17 F1.08,CSIT-4-BIF-s1,15
+Sunday,10:45 AM,12:15 PM,CSC317,Computer Graphics and Visualization,Lab,A13,Eng. Nada Ahmed,B10 F1.10,CSIT-3-CNC-s2,25
+Sunday,10:45 AM,12:15 PM,CNC311,Computer Networks,Lab,A33,Eng. Hana Tarek,B26 G.12,CSIT-3-CNC-s3,25
+Sunday,12:30 PM,2:00 PM,CSC111,Fundamentals of Programming,Lecture,P35,Dr. Reda Elbasiony ,B9 Theater,"CSIT-1-s4, CSIT-1-s5, CSIT-1-s6",75
+Sunday,12:30 PM,2:00 PM,LRA101,Japanese Culture,Lecture,P40,Dr. Sherine Elmotasem,B26 G.21,"CSIT-1-s7, CSIT-1-s8, CSIT-1-s9",75
+Sunday,12:30 PM,2:00 PM,ACM215,Ordinary Differential Equations,Lecture,P04,Dr. Ahmed Abdel-Malk,B17 G.09,"CSIT-2-s1, CSIT-2-s2, CSIT-2-s3",75
+Sunday,12:30 PM,2:00 PM,CNC311,Computer Networks,Lecture,P38,Prof. Samir Ahmed,B26 G-22 ,"CSIT-3-CNC-s3, CSIT-3-CSC-s1, CSIT-3-CSC-s2",65
+Sunday,12:30 PM,2:00 PM,ECE111,Digital Logic Design,Lab,A02,ECE Department Staff,B26 G.08,CSIT-1-s1,25
+Sunday,12:30 PM,2:00 PM,AID413,Data Security,Lab,A13,Eng. Nada Ahmed,B10 F1.18,CSIT-4-AID-s1,25
+Sunday,12:30 PM,2:00 PM,MTH111,Mathematics (1),Lab,A24,Eng. Yousef Ali,B26 G.12,CSIT-1-s2,25
+Sunday,12:30 PM,2:00 PM,LRA403,Japanese Language (3),Lab,A40,Prof. Lina Morales,B18 F1.08,CSIT-2-s7,25
+Sunday,12:30 PM,2:00 PM,CNC111,Networks and Web Programming,Lab,A43,Eng. Ali Sato,B10 F1.08,CSIT-2-s4,25
+Sunday,12:30 PM,2:00 PM,CSC315,Seminar and Project-Based Learning on CSIT,Lab,A17,Eng. Omnya Ramadan,B09 F1.13,CSIT-3-BIF-s1,15
+Sunday,12:30 PM,2:00 PM,ACM215,Ordinary Differential Equations,Lab,A45,Eng. Yousef Said,B17 G.07,CSIT-2-s5,25
+Sunday,12:30 PM,2:00 PM,CNC314,Database Systems,Lab,A16,Eng. Nourhan Waleed,B10 F1.07,CSIT-3-CNC-s2,25
+Sunday,12:30 PM,2:00 PM,AID428,New Trends in AI,Lab,A06,Eng. Fatima Ali,B18 F1.20,CSIT-4-AID-s3,25
+Sunday,12:30 PM,2:00 PM,CNC311,Computer Networks,Lab,A07,Eng. Fatma Elsayed,B17 G.12,CSIT-3-AID-s2,25
+Sunday,12:30 PM,2:00 PM,CNC418,Software Security,Lab,A41,Eng. Omar Hassan,B26 G.02,CSIT-4-CNC-s1,25
+Sunday,12:30 PM,2:00 PM,MTH212,Probability and Statistics,Lab,A01,BAS Department Staff,B26 F1.16,CSIT-2-s6,25
+Sunday,12:30 PM,2:00 PM,CNC311,Computer Networks,Lab,A15,Eng. Nada Hamdy,B18 F1.14,CSIT-3-CNC-s1,25
+Sunday,12:30 PM,2:00 PM,CSC412,Software Security,Lab,A42,Eng. Fatima Ali,B18 F1.13,CSIT-4-CSC-s1,25
+Sunday,2:15 PM,3:45 PM,CNC419,IT Security and Risk Management,Lab,A41,Eng. Omar Hassan,B26 G.20,CSIT-4-CNC-s1,25
+Sunday,2:15 PM,3:45 PM,ECE111,Digital Logic Design,Lab,A02,ECE Department Staff,B26 G.07,CSIT-1-s9,25
+Sunday,9:00 AM,10:30 AM,CSE214,Computer Organization,Lecture,P30,Prof. Mostafa Soliman,B18 G.08,"CSIT-2-s7, CSIT-2-s8, CSIT-2-s9",75
+Sunday,9:00 AM,10:30 AM,LRA306,Natural Resources and Sustainability,Lecture,P34,Prof. LBA,B26 G-22 ,"CSIT-2-s4, CSIT-2-s5, CSIT-2-s6",75
+Sunday,9:00 AM,10:30 AM,CSC317,Computer Graphics and Visualization,Lecture,P19,Dr. Hataba,B26 F1.13,"CSIT-3-CSC-s1, CSIT-3-CSC-s2",40
+Sunday,9:00 AM,10:30 AM,CSC410,Software Quality,Lecture,P28,Dr. Mohamed Khames,B26 F1.10,"CSIT-4-CSC-s1, CSIT-4-CSC-s2",40
+Sunday,9:00 AM,10:30 AM,MTH212,Probability and Statistics,Lab,A01,BAS Department Staff,B26 G.08,CSIT-2-s1,25
+Sunday,9:00 AM,10:30 AM,MTH111,Mathematics (1),Lab,A24,Eng. Yousef Ali,B26 F1.03,CSIT-1-s5,25
+Sunday,9:00 AM,10:30 AM,CSE214,Computer Organization,Lab,A08,Eng. Heba Abdelkader,B17 G.04,CSIT-2-s2,25
+Sunday,9:00 AM,10:30 AM,CNC314,Database Systems,Lab,A20,Eng. Salma Alashry,B18 G.07,CSIT-3-AID-s2,25
+Sunday,9:00 AM,10:30 AM,CSC111,Fundamentals of Programming,Lab,A10,Eng. Mariam Ismael,B26 F1.02,CSIT-1-s6,25
+Sunday,9:00 AM,10:30 AM,AID312,Intelligent Systems,Lab,A16,Eng. Nourhan Waleed,B10 F1.10,CSIT-3-CNC-s3,25
+Sunday,9:00 AM,10:30 AM,ECE324,Digital Signal Processing,Lab,A02,ECE Department Staff,B26 G.06,CSIT-3-AID-s3,25
+Sunday,9:00 AM,10:30 AM,LRA401,Japanese Language (1),Lab,A38,Prof. Yumi Sato,B08 F1.06,CSIT-1-s1,25
+Sunday,9:00 AM,10:30 AM,AID417,Advanced Data Mining,Lab,A07,Eng. Fatma Elsayed,B17 G.02,CSIT-4-AID-s3,25
+Sunday,9:00 AM,10:30 AM,PHY113,Physics 1,Lab,A06,Eng. Fatima Ali,B18 F1.13,CSIT-1-s8,25
+Sunday,9:00 AM,10:30 AM,CNC413,Digital Forensics,Lab,A41,Eng. Omar Hassan,B26 F1.04,CSIT-4-CNC-s3,25
+Thursday,10:45 AM,12:15 PM,CSC111,Fundamentals of Programming,Lecture,P35,Dr. Reda Elbasiony ,B26 F1.13,"CSIT-1-s7, CSIT-1-s8, CSIT-1-s9",75
+Thursday,10:45 AM,12:15 PM,LRA101,Japanese Culture,Lecture,P40,Dr. Sherine Elmotasem,Hall - Red,"CSIT-1-s1, CSIT-1-s2, CSIT-1-s3",75
+Thursday,10:45 AM,12:15 PM,LRA104,Music and Technology,Lecture,P03,Dr. Aisha Khan,B18 F1-21,"CSIT-1-s4, CSIT-1-s5, CSIT-1-s6",75
+Thursday,10:45 AM,12:15 PM,CSC211,Software Engineering,Lecture,P06,Dr. Ahmed Arafa,B7 Theater,"CSIT-2-s7, CSIT-2-s8, CSIT-2-s9",75
+Thursday,10:45 AM,12:15 PM,CSC317,Computer Graphics and Visualization,Lecture,P19,Dr. Hataba,Hall - Yellow,"CSIT-3-AID-s1, CSIT-3-AID-s2, CSIT-3-AID-s3",75
+Thursday,10:45 AM,12:15 PM,AID413,Data Security,Lecture,P37,Dr. Samir,B26 F1.01,"CSIT-4-AID-s1, CSIT-4-AID-s2, CSIT-4-AID-s3",75
+Thursday,10:45 AM,12:15 PM,MTH212,Probability and Statistics,Lab,A01,BAS Department Staff,B17 F1.16,CSIT-2-s4,25
+Thursday,10:45 AM,12:15 PM,ECE324,Digital Signal Processing,Lab,A02,ECE Department Staff,B18 G.09,CSIT-3-CNC-s2,25
+Thursday,10:45 AM,12:15 PM,CSC411,Software Verification and Validation,Lab,A42,Eng. Fatima Ali,B18 F1.10,CSIT-4-CSC-s1,25
+Thursday,10:45 AM,12:15 PM,LRA403,Japanese Language (3),Lab,A38,Prof. Yumi Sato,B26 G.13,CSIT-2-s2,25
+Thursday,10:45 AM,12:15 PM,CNC312,Foundations of Information Systems,Lab,A33,Eng. Hana Tarek,B25 F1.14,CSIT-3-CNC-s3,25
+Thursday,10:45 AM,12:15 PM,BIF425,New Trends in Bioinformatics,Lab,A32,Eng. Yousef Said,B26 G.14,CSIT-4-BIF-s1,15
+Thursday,10:45 AM,12:15 PM,AID312,Intelligent Systems,Lab,A16,Eng. Nourhan Waleed,B17 F1.03,CSIT-3-CSC-s2,15
+Thursday,10:45 AM,12:15 PM,CSC317,Computer Graphics and Visualization,Lab,A12,Eng. Menna Mahmoud,B26 G.07,CSIT-3-CSC-s1,25
+Thursday,10:45 AM,12:15 PM,ACM215,Ordinary Differential Equations,Lab,A43,Eng. Ali Sato,B08 F1.11,CSIT-2-s3,25
+Thursday,10:45 AM,12:15 PM,AID312,Intelligent Systems,Lab,A21,Eng. Salma Waleed,B26 F1.16,CSIT-3-CNC-s1,25
+Thursday,10:45 AM,12:15 PM,CNC413,Digital Forensics,Lab,A41,Eng. Omar Hassan,B17 G.21,CSIT-4-CNC-s2,25
+Thursday,12:30 PM,2:00 PM,MTH111,Mathematics (1),Lecture,P14,Dr. Ayman Arafa,B17 F1.16,"CSIT-1-s4, CSIT-1-s5, CSIT-1-s6",75
+Thursday,12:30 PM,2:00 PM,LRA105,Theater and Drama,Lecture,P33,Dr. Omar Sharif,B7 Theater,"CSIT-1-s7, CSIT-1-s8, CSIT-1-s9",75
+Thursday,12:30 PM,2:00 PM,CSE214,Computer Organization,Lecture,P30,Prof. Mostafa Soliman,B25 G-21,"CSIT-2-s4, CSIT-2-s5, CSIT-2-s6",75
+Thursday,12:30 PM,2:00 PM,ECE324,Digital Signal Processing,Lecture,P04,Dr. Ahmed Abdel-Malk,B26 F1.16,"CSIT-3-CNC-s3, CSIT-3-CSC-s1, CSIT-3-CSC-s2",65
+Thursday,12:30 PM,2:00 PM,AID311,Mathematics of Data Science,Lecture,P05,Dr. Ahmed Anter,B9 Theater,"CSIT-3-AID-s1, CSIT-3-AID-s2, CSIT-3-AID-s3",75
+Thursday,12:30 PM,2:00 PM,AID417,Advanced Data Mining,Lecture,P27,Dr. Mohamed Issa,B25 F1-19,"CSIT-4-AID-s1, CSIT-4-AID-s2, CSIT-4-AID-s3",75
+Thursday,12:30 PM,2:00 PM,CSC412,Software Security,Lecture,P13,Dr. Asmaa,B18 G.18,"CSIT-4-CSC-s1, CSIT-4-CSC-s2",40
+Thursday,12:30 PM,2:00 PM,MTH212,Probability and Statistics,Lab,A01,BAS Department Staff,B17 G.20,CSIT-2-s8,25
+Thursday,12:30 PM,2:00 PM,BIF311,Human Biology,Lecture,P44,Prof. BAS,B10 F1.08,CSIT-3-BIF-s1,15
+Thursday,12:30 PM,2:00 PM,BIF413,Algorithms in Bioinformatics,Lecture,P23,Prof. Marghany Hassan,B07 F1.23,CSIT-4-BIF-s1,15
+Thursday,12:30 PM,2:00 PM,MTH111,Mathematics (1),Lab,A24,Eng. Yousef Ali,B17 F1.03,CSIT-1-s3,25
+Thursday,12:30 PM,2:00 PM,CNC111,Networks and Web Programming,Lab,A43,Eng. Ali Sato,B08 F1.11,CSIT-2-s3,25
+Thursday,12:30 PM,2:00 PM,CNC312,Foundations of Information Systems,Lab,A03,Eng. Alaa Essam,B26 G.08,CSIT-3-CNC-s2,25
+Thursday,12:30 PM,2:00 PM,CNC411,Fundamentals of Cybersecurity,Lab,A10,Eng. Mariam Ismael,B18 G.04,CSIT-4-CNC-s2,25
+Thursday,12:30 PM,2:00 PM,CSC211,Software Engineering,Lab,A13,Eng. Nada Ahmed,B18 G.21,CSIT-2-s2,25
+Thursday,12:30 PM,2:00 PM,PHY113,Physics 1,Lab,A06,Eng. Fatima Ali,B26 G.14,CSIT-1-s1,25
+Thursday,12:30 PM,2:00 PM,LRA403,Japanese Language (3),Lab,A38,Prof. Yumi Sato,B26 G.21,CSIT-2-s1,25
+Thursday,12:30 PM,2:00 PM,LRA401,Japanese Language (1),Lab,A40,Prof. Lina Morales,B18 G.09,CSIT-1-s2,25
+Thursday,12:30 PM,2:00 PM,CNC413,Digital Forensics,Lab,A41,Eng. Omar Hassan,B17 G.07,CSIT-4-CNC-s1,25
+Thursday,12:30 PM,2:00 PM,CSC317,Computer Graphics and Visualization,Lab,A21,Eng. Salma Waleed,B26 F1.08,CSIT-3-CNC-s1,25
+Thursday,2:15 PM,3:45 PM,CSC410,Software Quality,Lab,A42,Eng. Fatima Ali,B18 F1.01,CSIT-4-CSC-s2,15
+Thursday,9:00 AM,10:30 AM,ECE111,Digital Logic Design,Lecture,P08,Prof. Ahmed Allam,Hall - Green,"CSIT-1-s7, CSIT-1-s8, CSIT-1-s9",75
+Thursday,9:00 AM,10:30 AM,AID312,Intelligent Systems,Lecture,P07,Dr. Ahmed Bayumi,B25 G-21,"CSIT-3-AID-s1, CSIT-3-AID-s2, CSIT-3-AID-s3",75
+Thursday,9:00 AM,10:30 AM,CNC312,Foundations of Information Systems,Lecture,P35,Dr. Reda Elbasiony ,B26 G.21,"CSIT-3-CNC-s1, CSIT-3-CNC-s2, CSIT-3-CNC-s3",75
+Thursday,9:00 AM,10:30 AM,CSC314,Software Modeling and Analysis,Lab,A24,Eng. Yousef Ali,B17 F1.18,CSIT-3-CSC-s2,15
+Thursday,9:00 AM,10:30 AM,BIF424,IT Infrastructure,Lecture,P28,Dr. Mohamed Khames,B08 F1.11,CSIT-4-BIF-s1,15
+Thursday,9:00 AM,10:30 AM,PHY113,Physics 1,Lab,A01,BAS Department Staff,B17 G.02,CSIT-1-s5,25
+Thursday,9:00 AM,10:30 AM,PHY113,Physics 1,Lab,A06,Eng. Fatima Ali,B26 F1.04,CSIT-1-s6,25
+Thursday,9:00 AM,10:30 AM,LRA401,Japanese Language (1),Lab,A38,Prof. Yumi Sato,B26 G.02,CSIT-1-s4,25
+Thursday,9:00 AM,10:30 AM,CSE214,Computer Organization,Lab,A17,Eng. Omnya Ramadan,B26 G.12,CSIT-2-s7,25
+Thursday,9:00 AM,10:30 AM,CNC111,Networks and Web Programming,Lab,A45,Eng. Yousef Said,B26 G.04,CSIT-2-s2,25
+Thursday,9:00 AM,10:30 AM,AID411,BIG Data Analytics & Visualization,Lab,A14,Eng. Nada Essam,B26 G.20,CSIT-4-AID-s1,25
+Thursday,9:00 AM,10:30 AM,CSC211,Software Engineering,Lab,A36,Eng. Adam Mohamed,B18 F1.12,CSIT-2-s3,25
+Thursday,9:00 AM,10:30 AM,LRA403,Japanese Language (3),Lab,A40,Prof. Lina Morales,B18 G.04,CSIT-2-s9,25
+Thursday,9:00 AM,10:30 AM,CSC111,Fundamentals of Programming,Lab,A35,Eng. Maryam Essam,B07 F1.21,CSIT-1-s1,25
+Thursday,9:00 AM,10:30 AM,ACM215,Ordinary Differential Equations,Lab,A44,Eng. Layla Zayd,B26 G.10,CSIT-2-s8,25
+Thursday,9:00 AM,10:30 AM,CNC418,Software Security,Lab,A41,Eng. Omar Hassan,B17 G.08,CSIT-4-CNC-s3,25
+Thursday,9:00 AM,10:30 AM,ECE111,Digital Logic Design,Lab,A02,ECE Department Staff,B18 G.13,CSIT-1-s3,25
+Thursday,9:00 AM,10:30 AM,CNC311,Computer Networks,Lab,A07,Eng. Fatma Elsayed,B26 G.08,CSIT-3-CSC-s1,25
+Thursday,9:00 AM,10:30 AM,CSC426,Distributed Systems,Lab,A42,Eng. Fatima Ali,B18 F1.19,CSIT-4-CSC-s1,25
+Tuesday,10:45 AM,12:15 PM,CSC111,Fundamentals of Programming,Lecture,P35,Dr. Reda Elbasiony ,B26 F1.10,"CSIT-1-s1, CSIT-1-s2, CSIT-1-s3",75
+Tuesday,10:45 AM,12:15 PM,LRA101,Japanese Culture,Lecture,P40,Dr. Sherine Elmotasem,B7 Theater,"CSIT-1-s4, CSIT-1-s5, CSIT-1-s6",75
+Tuesday,10:45 AM,12:15 PM,CSE214,Computer Organization,Lecture,P30,Prof. Mostafa Soliman,B10 Theater,"CSIT-2-s1, CSIT-2-s2, CSIT-2-s3",75
+Tuesday,10:45 AM,12:15 PM,LRA306,Natural Resources and Sustainability,Lecture,P34,Prof. LBA,Hall - Blue,"CSIT-2-s7, CSIT-2-s8, CSIT-2-s9",75
+Tuesday,10:45 AM,12:15 PM,AID312,Intelligent Systems,Lecture,P07,Dr. Ahmed Bayumi,B17 F1.16,"CSIT-3-BIF-s1, CSIT-3-CNC-s1, CSIT-3-CNC-s2",65
+Tuesday,10:45 AM,12:15 PM,AID427,New Trends in Data Science,Lecture,P06,Dr. Ahmed Arafa,B25 F1-19,"CSIT-4-AID-s1, CSIT-4-AID-s2, CSIT-4-AID-s3",75
+Tuesday,10:45 AM,12:15 PM,CSC411,Software Verification and Validation,Lecture,P28,Dr. Mohamed Khames,B18 G.09,"CSIT-4-CSC-s1, CSIT-4-CSC-s2",40
+Tuesday,10:45 AM,12:15 PM,ECE324,Digital Signal Processing,Lab,A02,ECE Department Staff,B26 G.14,CSIT-3-AID-s1,25
+Tuesday,10:45 AM,12:15 PM,BIF413,Algorithms in Bioinformatics,Lab,A25,Eng. Hana Adel,B07 F1.20,CSIT-4-BIF-s1,15
+Tuesday,10:45 AM,12:15 PM,MTH111,Mathematics (1),Lab,A24,Eng. Yousef Ali,B17 F1.18,CSIT-1-s9,25
+Tuesday,10:45 AM,12:15 PM,CSC211,Software Engineering,Lab,A13,Eng. Nada Ahmed,B18 F1.14,CSIT-2-s6,25
+Tuesday,10:45 AM,12:15 PM,CNC314,Database Systems,Lab,A33,Eng. Hana Tarek,B17 G.02,CSIT-3-CSC-s1,25
+Tuesday,10:45 AM,12:15 PM,CNC311,Computer Networks,Lab,A15,Eng. Nada Hamdy,B17 F1.03,CSIT-3-CSC-s2,15
+Tuesday,10:45 AM,12:15 PM,CSC111,Fundamentals of Programming,Lab,A10,Eng. Mariam Ismael,B26 G.06,CSIT-1-s7,25
+Tuesday,10:45 AM,12:15 PM,LRA401,Japanese Language (1),Lab,A40,Prof. Lina Morales,B26 F1.04,CSIT-1-s8,25
+Tuesday,10:45 AM,12:15 PM,LRA403,Japanese Language (3),Lab,A38,Prof. Yumi Sato,B18 G.11,CSIT-2-s5,25
+Tuesday,10:45 AM,12:15 PM,CSC317,Computer Graphics and Visualization,Lab,A12,Eng. Menna Mahmoud,B07 F1.22,CSIT-3-AID-s2,25
+Tuesday,10:45 AM,12:15 PM,CNC314,Database Systems,Lab,A16,Eng. Nourhan Waleed,B18 G.08,CSIT-3-AID-s3,25
+Tuesday,10:45 AM,12:15 PM,CNC314,Database Systems,Lab,A20,Eng. Salma Alashry,B07 F1.24,CSIT-3-CNC-s3,25
+Tuesday,10:45 AM,12:15 PM,CNC415,Network Design and Management,Lab,A41,Eng. Omar Hassan,B17 G.08,CSIT-4-CNC-s2,25
+Tuesday,12:30 PM,2:00 PM,LRA104,Music and Technology,Lecture,P03,Dr. Aisha Khan,Hall - Green,"CSIT-1-s7, CSIT-1-s8, CSIT-1-s9",75
+Tuesday,12:30 PM,2:00 PM,ECE324,Digital Signal Processing,Lecture,P04,Dr. Ahmed Abdel-Malk,B17 F1.15,"CSIT-3-AID-s1, CSIT-3-AID-s2, CSIT-3-AID-s3",75
+Tuesday,12:30 PM,2:00 PM,CNC314,Database Systems,Lecture,P27,Dr. Mohamed Issa,B26 G.21,"CSIT-3-CNC-s3, CSIT-3-CSC-s1, CSIT-3-CSC-s2",65
+Tuesday,12:30 PM,2:00 PM,ECE111,Digital Logic Design,Lab,A02,ECE Department Staff,B26 G.08,CSIT-1-s5,25
+Tuesday,12:30 PM,2:00 PM,AID413,Data Security,Lab,A13,Eng. Nada Ahmed,B18 G.07,CSIT-4-AID-s2,25
+Tuesday,12:30 PM,2:00 PM,CNC419,IT Security and Risk Management,Lab,A41,Eng. Omar Hassan,B17 F1.03,CSIT-4-CNC-s2,25
+Tuesday,12:30 PM,2:00 PM,BIF425,New Trends in Bioinformatics,Lecture,P09,Prof. Ahmed Othman,B26 G.04,CSIT-4-BIF-s1,15
+Tuesday,12:30 PM,2:00 PM,MTH111,Mathematics (1),Lab,A24,Eng. Yousef Ali,B17 F1.08,CSIT-1-s6,25
+Tuesday,12:30 PM,2:00 PM,CSE214,Computer Organization,Lab,A17,Eng. Omnya Ramadan,B17 G.20,CSIT-2-s3,25
+Tuesday,12:30 PM,2:00 PM,ACM215,Ordinary Differential Equations,Lab,A44,Eng. Layla Zayd,B07 F1.21,CSIT-2-s4,25
+Tuesday,12:30 PM,2:00 PM,CSC111,Fundamentals of Programming,Lab,A10,Eng. Mariam Ismael,B26 G.03,CSIT-1-s3,25
+Tuesday,12:30 PM,2:00 PM,PHY113,Physics 1,Lab,A06,Eng. Fatima Ali,B25 F1.10,CSIT-1-s2,25
+Tuesday,12:30 PM,2:00 PM,LRA403,Japanese Language (3),Lab,A38,Prof. Yumi Sato,B18 G.19,CSIT-2-s6,25
+Tuesday,12:30 PM,2:00 PM,CNC111,Networks and Web Programming,Lab,A43,Eng. Ali Sato,B26 F1.08,CSIT-2-s1,25
+Tuesday,12:30 PM,2:00 PM,MTH212,Probability and Statistics,Lab,A01,BAS Department Staff,B26 G.20,CSIT-2-s9,25
+Tuesday,12:30 PM,2:00 PM,CSC414,Game Design & Development,Lab,A42,Eng. Fatima Ali,B07 F1.02,CSIT-4-CSC-s2,15
+Tuesday,2:15 PM,3:45 PM,ECE324,Digital Signal Processing,Lab,A02,ECE Department Staff,B26 F1.02,CSIT-3-CNC-s3,25
+Tuesday,9:00 AM,10:30 AM,PHY113,Physics 1,Lecture,P01,Dr. Adel Fathy,B25 G-21,"CSIT-1-s4, CSIT-1-s5, CSIT-1-s6",75
+Tuesday,9:00 AM,10:30 AM,CNC111,Networks and Web Programming,Lecture,P05,Dr. Ahmed Anter,B17 F1.15,"CSIT-2-s7, CSIT-2-s8, CSIT-2-s9",75
+Tuesday,9:00 AM,10:30 AM,CNC311,Computer Networks,Lecture,P38,Prof. Samir Ahmed,B26 G.08,"CSIT-3-BIF-s1, CSIT-3-CNC-s1, CSIT-3-CNC-s2",65
+Tuesday,9:00 AM,10:30 AM,CNC415,Network Design and Management,Lecture,P32,Dr. Mustafa AlSayed,B8 Theater,"CSIT-4-CNC-s1, CSIT-4-CNC-s2, CSIT-4-CNC-s3",75
+Tuesday,9:00 AM,10:30 AM,BIF412,Management and Design of Health Care Systems,Lab,A26,Eng. Zayd Tarek,B09 G.35,CSIT-4-BIF-s1,15
+Tuesday,9:00 AM,10:30 AM,MTH111,Mathematics (1),Lab,A24,Eng. Yousef Ali,B17 F1.16,CSIT-1-s8,25
+Tuesday,9:00 AM,10:30 AM,CSE214,Computer Organization,Lab,A08,Eng. Heba Abdelkader,B17 G.09,CSIT-2-s5,25
+Tuesday,9:00 AM,10:30 AM,CNC111,Networks and Web Programming,Lab,A43,Eng. Ali Sato,B26 F1.08,CSIT-2-s6,25
+Tuesday,9:00 AM,10:30 AM,AID312,Intelligent Systems,Lab,A16,Eng. Nourhan Waleed,B18 F1.08,CSIT-3-AID-s1,25
+Tuesday,9:00 AM,10:30 AM,AID311,Mathematics of Data Science,Lab,A28,Eng. Omar Hassan,B09 F1.22,CSIT-3-AID-s2,25
+Tuesday,9:00 AM,10:30 AM,ACM215,Ordinary Differential Equations,Lab,A44,Eng. Layla Zayd,B07 F1.02,CSIT-2-s2,25
+Tuesday,9:00 AM,10:30 AM,AID428,New Trends in AI,Lab,A06,Eng. Fatima Ali,B25 F1.13,CSIT-4-AID-s2,25
+Tuesday,9:00 AM,10:30 AM,AID417,Advanced Data Mining,Lab,A07,Eng. Fatma Elsayed,B25 G.02,CSIT-4-AID-s1,25
+Tuesday,9:00 AM,10:30 AM,CSC317,Computer Graphics and Visualization,Lab,A21,Eng. Salma Waleed,B18 G.07,CSIT-3-AID-s3,25
+Tuesday,9:00 AM,10:30 AM,PHY113,Physics 1,Lab,A01,BAS Department Staff,B26 F1.02,CSIT-1-s3,25
+Tuesday,9:00 AM,10:30 AM,LRA403,Japanese Language (3),Lab,A40,Prof. Lina Morales,B26 G.20,CSIT-2-s3,25
+Tuesday,9:00 AM,10:30 AM,CSC211,Software Engineering,Lab,A12,Eng. Menna Mahmoud,B07 F1.21,CSIT-2-s1,25
+Tuesday,9:00 AM,10:30 AM,CSC412,Software Security,Lab,A42,Eng. Fatima Ali,B07 F1.24,CSIT-4-CSC-s2,15
+Tuesday,9:00 AM,10:30 AM,ECE111,Digital Logic Design,Lab,A02,ECE Department Staff,B26 G.21,CSIT-1-s2,25
+Wednesday,10:45 AM,12:15 PM,MTH212,Probability and Statistics,Lecture,P14,Dr. Ayman Arafa,B17 G.09,"CSIT-2-s4, CSIT-2-s5, CSIT-2-s6",75
+Wednesday,10:45 AM,12:15 PM,CNC111,Networks and Web Programming,Lecture,P05,Dr. Ahmed Anter,B8 Theater,"CSIT-2-s1, CSIT-2-s2, CSIT-2-s3",75
+Wednesday,10:45 AM,12:15 PM,AID428,New Trends in AI,Lecture,P07,Dr. Ahmed Bayumi,B18 G.08,"CSIT-4-AID-s1, CSIT-4-AID-s2, CSIT-4-AID-s3",75
+Wednesday,10:45 AM,12:15 PM,BIF311,Human Biology,Lab,A25,Eng. Hana Adel,B25 G.05,CSIT-3-BIF-s1,15
+Wednesday,10:45 AM,12:15 PM,MTH111,Mathematics (1),Lab,A24,Eng. Yousef Ali,B18 G.21,CSIT-1-s1,25
+Wednesday,10:45 AM,12:15 PM,MTH111,Mathematics (1),Lab,A01,BAS Department Staff,B09 F1.04,CSIT-1-s7,25
+Wednesday,10:45 AM,12:15 PM,CSE214,Computer Organization,Lab,A17,Eng. Omnya Ramadan,B26 F1.02,CSIT-2-s9,25
+Wednesday,10:45 AM,12:15 PM,CNC312,Foundations of Information Systems,Lab,A03,Eng. Alaa Essam,B17 F1.14,CSIT-3-CNC-s1,25
+Wednesday,10:45 AM,12:15 PM,ACM215,Ordinary Differential Equations,Lab,A45,Eng. Yousef Said,B26 F1.04,CSIT-2-s7,25
+Wednesday,10:45 AM,12:15 PM,CSC111,Fundamentals of Programming,Lab,A14,Eng. Nada Essam,B26 G.12,CSIT-1-s2,25
+Wednesday,10:45 AM,12:15 PM,LRA401,Japanese Language (1),Lab,A40,Prof. Lina Morales,B08 F1.25,CSIT-1-s3,25
+Wednesday,10:45 AM,12:15 PM,CSC111,Fundamentals of Programming,Lab,A10,Eng. Mariam Ismael,B17 G.21,CSIT-1-s8,25
+Wednesday,10:45 AM,12:15 PM,CNC314,Database Systems,Lab,A16,Eng. Nourhan Waleed,B09 F1.14,CSIT-3-CSC-s2,15
+Wednesday,10:45 AM,12:15 PM,CNC111,Networks and Web Programming,Lab,A43,Eng. Ali Sato,B25 F1.18,CSIT-2-s8,25
+Wednesday,10:45 AM,12:15 PM,PHY113,Physics 1,Lab,A06,Eng. Fatima Ali,B17 G.20,CSIT-1-s4,25
+Wednesday,10:45 AM,12:15 PM,AID312,Intelligent Systems,Lab,A28,Eng. Omar Hassan,B26 F1.10,CSIT-3-AID-s3,25
+Wednesday,10:45 AM,12:15 PM,CNC311,Computer Networks,Lab,A15,Eng. Nada Hamdy,B18 F1.12,CSIT-3-CNC-s2,25
+Wednesday,10:45 AM,12:15 PM,CNC419,IT Security and Risk Management,Lecture,P19,Dr. Hataba,Hall - Red,"CSIT-4-CNC-s1, CSIT-4-CNC-s2, CSIT-4-CNC-s3",75
+Wednesday,10:45 AM,12:15 PM,CSC415,New Trends in Computer Science,Lab,A42,Eng. Fatima Ali,B26 F1.08,CSIT-4-CSC-s1,25
+Wednesday,10:45 AM,12:15 PM,CSC317,Computer Graphics and Visualization,Lab,A21,Eng. Salma Waleed,B25 G.16,CSIT-3-AID-s1,25
+Wednesday,10:45 AM,12:15 PM,ECE324,Digital Signal Processing,Lab,A02,ECE Department Staff,B26 G.08,CSIT-3-CSC-s1,25
+Wednesday,12:30 PM,2:00 PM,PHY113,Physics 1,Lecture,P01,Dr. Adel Fathy,B07 G.01,"CSIT-1-s1, CSIT-1-s2, CSIT-1-s3",75
+Wednesday,12:30 PM,2:00 PM,CSC211,Software Engineering,Lecture,P06,Dr. Ahmed Arafa,B26 F1.13,"CSIT-2-s1, CSIT-2-s2, CSIT-2-s3",75
+Wednesday,12:30 PM,2:00 PM,ECE324,Digital Signal Processing,Lecture,P04,Dr. Ahmed Abdel-Malk,B17 F1.16,"CSIT-3-BIF-s1, CSIT-3-CNC-s1, CSIT-3-CNC-s2",65
+Wednesday,12:30 PM,2:00 PM,CSC426,Distributed Systems,Lecture,P32,Dr. Mustafa AlSayed,B26 F1.10,"CSIT-4-CSC-s1, CSIT-4-CSC-s2",40
+Wednesday,12:30 PM,2:00 PM,MTH212,Probability and Statistics,Lab,A01,BAS Department Staff,B09 F1.22,CSIT-2-s5,25
+Wednesday,12:30 PM,2:00 PM,AID427,New Trends in Data Science,Lab,A06,Eng. Fatima Ali,B17 G.07,CSIT-4-AID-s3,25
+Wednesday,12:30 PM,2:00 PM,CSE214,Computer Organization,Lab,A08,Eng. Heba Abdelkader,B10 F1.18,CSIT-2-s4,25
+Wednesday,12:30 PM,2:00 PM,ACM215,Ordinary Differential Equations,Lab,A44,Eng. Layla Zayd,B26 F1.12,CSIT-2-s6,25
+Wednesday,12:30 PM,2:00 PM,CSC111,Fundamentals of Programming,Lab,A35,Eng. Maryam Essam,B07 F1.20,CSIT-1-s4,25
+Wednesday,12:30 PM,2:00 PM,CSC317,Computer Graphics and Visualization,Lab,A37,Eng. Nora Gamal,B07 F1.22,CSIT-3-CSC-s2,15
+Wednesday,12:30 PM,2:00 PM,CNC111,Networks and Web Programming,Lab,A45,Eng. Yousef Said,B26 G.14,CSIT-2-s7,25
+Wednesday,12:30 PM,2:00 PM,ECE111,Digital Logic Design,Lab,A02,ECE Department Staff,B26 G.07,CSIT-1-s8,25
+Wednesday,12:30 PM,2:00 PM,AID311,Mathematics of Data Science,Lab,A12,Eng. Menna Mahmoud,B17 F1.17,CSIT-3-AID-s1,25
+Wednesday,12:30 PM,2:00 PM,CNC419,IT Security and Risk Management,Lab,A41,Eng. Omar Hassan,B18 G.08,CSIT-4-CNC-s3,25
+Wednesday,2:15 PM,3:45 PM,MTH111,Mathematics (1),Lecture,P14,Dr. Ayman Arafa,B17 F1.15,"CSIT-1-s1, CSIT-1-s2, CSIT-1-s3",75
+Wednesday,2:15 PM,3:45 PM,ECE324,Digital Signal Processing,Lab,A02,ECE Department Staff,B26 G.21,CSIT-3-BIF-s1,15
+Wednesday,2:15 PM,3:45 PM,CSC410,Software Quality,Lab,A42,Eng. Fatima Ali,B26 G.08,CSIT-4-CSC-s1,25
+Wednesday,9:00 AM,10:30 AM,ACM215,Ordinary Differential Equations,Lecture,P04,Dr. Ahmed Abdel-Malk,B17 F1.16,"CSIT-2-s7, CSIT-2-s8, CSIT-2-s9",75
+Wednesday,9:00 AM,10:30 AM,CNC314,Database Systems,Lecture,P27,Dr. Mohamed Issa,B26 F1.10,"CSIT-3-BIF-s1, CSIT-3-CNC-s1, CSIT-3-CNC-s2",65
+Wednesday,9:00 AM,10:30 AM,CNC413,Digital Forensics,Lecture,P13,Dr. Asmaa,B07 G.01,"CSIT-4-CNC-s1, CSIT-4-CNC-s2, CSIT-4-CNC-s3",75
+Wednesday,9:00 AM,10:30 AM,BIF424,IT Infrastructure,Lab,A26,Eng. Zayd Tarek,B09 G.35,CSIT-4-BIF-s1,15
+Wednesday,9:00 AM,10:30 AM,MTH111,Mathematics (1),Lab,A24,Eng. Yousef Ali,B18 F1.02,CSIT-1-s4,25
+Wednesday,9:00 AM,10:30 AM,LRA401,Japanese Language (1),Lab,A38,Prof. Yumi Sato,B17 F1.15,CSIT-1-s6,25
+Wednesday,9:00 AM,10:30 AM,CSE214,Computer Organization,Lab,A17,Eng. Omnya Ramadan,B26 G.14,CSIT-2-s6,25
+Wednesday,9:00 AM,10:30 AM,CSC111,Fundamentals of Programming,Lab,A10,Eng. Mariam Ismael,B17 F1.13,CSIT-1-s9,25
+Wednesday,9:00 AM,10:30 AM,CNC111,Networks and Web Programming,Lab,A45,Eng. Yousef Said,B26 G.18,CSIT-2-s5,25
+Wednesday,9:00 AM,10:30 AM,CNC314,Database Systems,Lab,A16,Eng. Nourhan Waleed,B09 F1.05,CSIT-3-AID-s1,25
+Wednesday,9:00 AM,10:30 AM,AID312,Intelligent Systems,Lab,A21,Eng. Salma Waleed,B25 G.16,CSIT-3-CSC-s1,25
+Wednesday,9:00 AM,10:30 AM,CSC211,Software Engineering,Lab,A13,Eng. Nada Ahmed,B17 G.04,CSIT-2-s4,25
+Wednesday,9:00 AM,10:30 AM,CSC414,Game Design & Development,Lab,A42,Eng. Fatima Ali,B26 G.08,CSIT-4-CSC-s1,25
+Wednesday,9:00 AM,10:30 AM,ECE324,Digital Signal Processing,Lab,A02,ECE Department Staff,B26 F1.12,CSIT-3-CSC-s2,15
+Wednesday,9:00 AM,10:30 AM,AID427,New Trends in Data Science,Lab,A06,Eng. Fatima Ali,B17 F1.09,CSIT-4-AID-s1,25
