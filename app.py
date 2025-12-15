@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import solver_engine
-import time
+
 
 # --- PAGE CONFIGURATION ---
 st.set_page_config(page_title="University Timetable Generator", layout="wide")

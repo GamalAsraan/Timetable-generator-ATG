@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+.env
+
+# Project Specific
+timetables_output/
+final_timetable.csv
+*.docx
+Data/final_timetable.csv
